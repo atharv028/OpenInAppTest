@@ -25,7 +25,9 @@ The app is developed on Kotlin following the latest MVVM architecture.
 
 Available at demo.mp4 in the root directory of this repository.
 
-![](demo.mp4)
+
+https://github.com/atharv028/OpenInAppTest/assets/89896473/c45ac88a-57b0-4cc3-86ed-7249f7f848a6
+
 
 ---
 
