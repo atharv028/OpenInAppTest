@@ -12,5 +12,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">#0E6FFF</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/figtree_400</item>
     </style>
 </resources>

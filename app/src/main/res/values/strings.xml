@@ -9,4 +9,17 @@
     <string name="good_morning">Good morning</string>
     <string name="today_s_clicks">Today\'s clicks</string>
     <string name="view_analytics">View Analytics</string>
+    <string name="faq">Frequently Asked Questions</string>
+    <string name="talk_with_us">Talk with us</string>
+    <string name="view_all_links">View all Links</string>
+    <string name="search_content">Search Bar</string>
+    <string name="recent_links">Recent Links</string>
+    <string name="top_links">Top Links</string>
+    <string name="top_source">Top source</string>
+    <string name="instagram">Instagram</string>
+    <string name="top_location">Top location</string>
+    <string name="ahemdabad">Ahemdabad</string>
+    <string name="overview">Overview</string>
+    <string name="open_in_app">Open In App 🚀</string>
+    <string name="dashboard">Dashboard</string>
 </resources>

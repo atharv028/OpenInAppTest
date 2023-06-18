@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Dashboard"
+                android:text="@string/dashboard"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -42,6 +42,7 @@
                 android:id="@+id/settings_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/dashboard"
                 android:src="@drawable/ic_settings" />
         </LinearLayout>
 
@@ -52,9 +53,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-15dp"
-            android:paddingBottom="40dp"
             android:background="@drawable/bg_dashboard"
-            android:elevation="10dp">
+            android:elevation="10dp"
+            android:paddingBottom="40dp">
 
             <TextView
                 android:id="@+id/gm_tv"
@@ -73,7 +74,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="8dp"
-                android:text="Open In App 🚀"
+                android:fontFamily="@font/figtree_600"
+                android:text="@string/open_in_app"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -98,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
-                    android:text="Overview"
+                    android:text="@string/overview"
                     android:textColor="@color/secondary_color" />
 
                 <com.github.mikephil.charting.charts.LineChart
@@ -106,9 +108,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginBottom="20dp"
                     android:layout_marginTop="10dp"
-                    />
+                    android:layout_marginBottom="20dp" />
             </LinearLayout>
 
             <HorizontalScrollView
@@ -137,6 +138,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:contentDescription="@string/today_s_clicks"
                             android:src="@drawable/ic_clicks" />
 
                         <TextView
@@ -145,7 +147,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:singleLine="true"
-                            android:text="123"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -171,6 +172,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:contentDescription="@string/top_location"
                             android:src="@drawable/ic_location" />
 
                         <TextView
@@ -179,7 +181,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:singleLine="true"
-                            android:text="Ahemdabad"
+                            android:text="@string/ahemdabad"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -188,7 +190,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
-                            android:text="Top location"
+                            android:text="@string/top_location"
                             android:textColor="@color/secondary_color"
                             android:textSize="14sp" />
 
@@ -205,6 +207,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:contentDescription="@string/top_source"
                             android:src="@drawable/ic_web" />
 
                         <TextView
@@ -213,7 +216,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:singleLine="true"
-                            android:text="Instagram"
+                            android:text="@string/instagram"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -222,7 +225,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
-                            android:text="Top source"
+                            android:text="@string/top_source"
                             android:textColor="@color/secondary_color"
                             android:textSize="14sp" />
 
@@ -249,11 +252,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:drawablePadding="10dp"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="@string/view_analytics"
                     android:textColor="@color/black"
-                    android:drawablePadding="10dp"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/ic_analytics" />
             </LinearLayout>
@@ -284,7 +287,7 @@
                         android:button="@android:color/transparent"
                         android:checked="true"
                         android:gravity="center"
-                        android:text="Top Links"
+                        android:text="@string/top_links"
                         android:textColor="@color/radio_text_selector" />
 
                     <RadioButton
@@ -295,7 +298,7 @@
                         android:background="@drawable/radio_selector"
                         android:button="@android:color/transparent"
                         android:gravity="center"
-                        android:text="Recent Links"
+                        android:text="@string/recent_links"
                         android:textColor="@color/radio_text_selector" />
 
                 </RadioGroup>
@@ -309,21 +312,23 @@
                     android:id="@+id/search_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/search_content"
                     android:src="@drawable/ic_search" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/links_rv"
                 android:layout_width="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="468dp"
                 android:layout_marginEnd="15dp"
-                tools:listitem="@layout/item_link"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/link_options_ll" />
+                app:layout_constraintTop_toBottomOf="@id/link_options_ll"
+                tools:listitem="@layout/item_link" />
 
             <LinearLayout
                 android:id="@+id/view_links_ll"
@@ -342,11 +347,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:drawablePadding="10dp"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="View all Links"
+                    android:text="@string/view_all_links"
                     android:textColor="@color/black"
-                    android:drawablePadding="10dp"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/ic_links" />
             </LinearLayout>
@@ -368,14 +373,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
-                    android:text="Talk with us"
-                    android:textColor="@color/black"
                     android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="20dp"
+                    android:text="@string/talk_with_us"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/ic_whatsapp" />
             </LinearLayout>
@@ -397,27 +402,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
-                    android:text="Frequently Asked Questions"
-                    android:textColor="@color/black"
                     android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="20dp"
+                    android:text="@string/faq"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/ic_faq" />
             </LinearLayout>
-
-
-
-
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </RelativeLayout>
-
 </ScrollView>
