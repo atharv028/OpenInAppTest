@@ -19,18 +19,10 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import tare.app.test.api.models.OverallUrlChart
-import tare.app.test.api.models.ResponseDashboard
 import tare.app.test.openinapptest.R
 import tare.app.test.openinapptest.adapter.LinkAdapter
 import tare.app.test.openinapptest.databinding.FragmentDashboardBinding
 import tare.app.test.openinapptest.ui.unavailable.NotImplementedActivity
-import tare.app.test.openinapptest.utils.ApiResponse
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
-import kotlin.reflect.full.memberProperties
-
 
 @AndroidEntryPoint
 class DashboardFragment : Fragment() {
@@ -91,12 +83,11 @@ class DashboardFragment : Fragment() {
         }
         viewModel.dashboardData.observe(viewLifecycleOwner) {
             when (it) {
-                is ApiResponse.Success -> {
-                    Toast.makeText(requireContext(), "Data Fetched", Toast.LENGTH_SHORT).show()
-                    setData(it.data)
+                is DashboardViewModel.State.Loaded -> {
+                    setData(it)
                 }
 
-                is ApiResponse.Error -> {
+                is DashboardViewModel.State.Error -> {
                     Snackbar.make(requireView(), "Failed to fetch data", Snackbar.LENGTH_SHORT)
                         .apply {
                             setAction("Retry") {
@@ -111,52 +102,25 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun setData(resp: ResponseDashboard) {
+    private fun setData(data: DashboardViewModel.State.Loaded) {
         binding?.apply {
-            clickTv.text = resp.todayClicks?.toString() ?: "N/A"
-            locationTv.text = if (resp.topLocation.isNullOrEmpty()) {
-                "N/A"
-            } else {
-                resp.topLocation
-            }
-            sourceTv.text = if (resp.topSource.isNullOrEmpty()) {
-                "N/A"
-            } else {
-                resp.topSource
-            }
-
+            clickTv.text = data.todayClicks
+            locationTv.text = data.topLocation
+            sourceTv.text = data.topSource
             viewModel.selectedLink.observe(viewLifecycleOwner) {
                 when (it) {
                     LinkType.TOP -> {
-                        adapter.updateData(resp.data?.topLinks ?: listOf())
+                        adapter.updateData(data.topLinks)
                     }
 
                     LinkType.RECENT -> {
-                        adapter.updateData(resp.data?.recentLinks ?: listOf())
+                        adapter.updateData(data.recentLinks)
                     }
 
                     else -> {}
                 }
             }
-            val formatter = SimpleDateFormat("dd MMM", Locale.getDefault())
-            val startDate = formatter.parse("18 Apr")
-            val data = mutableListOf<Entry>()
-            val labels = mutableListOf<String>()
-            resp.data?.overallUrlChart?.let {
-                var count = 0f
-                for (prop in OverallUrlChart::class.memberProperties) {
-                    val value = prop.call(it)
-                    println("value: $value")
-                    data.add(Entry(count++, (value as Int).toFloat()))
-                }
-            }
-            val start = Calendar.getInstance()
-            start.time = startDate!!
-            for (i in 0..30) {
-                labels.add(formatter.format(start.time))
-                start.add(Calendar.DAY_OF_MONTH, 1)
-            }
-            setUpChart(chart, data, labels)
+            setUpChart(chart, data.chartData, data.chartLabels)
         }
     }
 
@@ -176,7 +140,7 @@ class DashboardFragment : Fragment() {
             }
         }
         chart.axisRight.isEnabled = false
-        chart.axisLeft.axisMaximum = 10f
+        chart.axisLeft.axisMaximum = 30f
         chart.description.isEnabled = false
         chart.legend.isEnabled = false
 

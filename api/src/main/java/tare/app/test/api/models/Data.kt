@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Data(
     @SerializedName("overall_url_chart")
-    var overallUrlChart: OverallUrlChart?,
+    val chartData: Map<String, Int?>,
     @SerializedName("recent_links")
     var recentLinks: List<Link>?,
     @SerializedName("top_links")
